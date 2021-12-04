@@ -1,8 +1,14 @@
 #[derive(Debug, Clone, Copy)]
 pub struct Puzzle {
-    pub year: u16,
-    pub day: u8,
-    pub part: Part,
+    pub(crate) year: u16,
+    pub(crate) day: u8,
+    pub(crate) part: Part,
+}
+
+impl Puzzle {
+    pub fn new(year: u16, day: u8, part: Part) -> Puzzle {
+        Puzzle { year, day, part }
+    }
 }
 
 impl std::fmt::Display for Puzzle {

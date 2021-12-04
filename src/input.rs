@@ -9,7 +9,7 @@ use std::fs;
 const INPUTS_STORAGE: &str = "inputs";
 const INPUTS_URL: &str = "https://adventofcode.com";
 
-pub fn get_input(puzzle: &Puzzle, token: Option<String>) -> Result<String, String> {
+pub fn get_input(puzzle: Puzzle, token: Option<String>) -> Result<String, String> {
     let token: Option<String> = resolve_token(token);
     let path: String = format!("./{}/{}/day{}", INPUTS_STORAGE, puzzle.year, puzzle.day);
     let path = PathBuf::from(path);
@@ -34,7 +34,7 @@ fn read_input(path: &Path) -> Result<String, String> {
     }
 }
 
-fn download_input(puzzle: &Puzzle, target: &Path, token: Option<String>) -> Result<String, String> {
+fn download_input(puzzle: Puzzle, target: &Path, token: Option<String>) -> Result<String, String> {
     let token: String = match token {
         None => {
             return Err(format!(
